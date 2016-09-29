@@ -1,0 +1,42 @@
+entity PreferredContact {
+	nameOfChoice String required
+}
+
+entity School {
+	schoolName String required
+}
+
+entity Dormitory {
+	dormName String required
+}
+
+entity Student {
+	fullName String required
+    emailAddress String required
+    phoneNumber String required
+    graduationDate LocalDate
+}
+
+relationship ManyToOne {
+	School{student} to Student
+}
+
+relationship ManyToOne {
+    PreferredContact{student} to Student
+}
+
+relationship ManyToOne {
+    Dormitory{student} to Student
+}
+
+
+// Set pagination options
+//paginate Student with infinite-scroll
+//paginate Student with pagination
+
+//dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+// Set an angular suffix
+//angularSuffix * with mySuffix

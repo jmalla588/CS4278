@@ -1,0 +1,17 @@
+version: '2'
+services:
+      jhipster:
+         image: jhipster
+         ports:
+           - "8080:8080"
+         volumes:
+           - .:/usr/src/app
+
+      grading_helper:
+          image: hello-world 
+          volumes: 
+            - .:/usr/src/app
+          stdin_open: true
+          tty: true                  
+          depends_on:                            
+            - jhipster

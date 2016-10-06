@@ -1,0 +1,76 @@
+version: '2'
+services:
+    ms1-app:
+        image: ms1
+        external_links:
+            - ms1-mysql:mysql
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONFIG_URI=http://admin:admin@registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ms1?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10
+    ms1-mysql:
+        container_name: ms1-mysql
+        image: mysql:5.7.13
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=ms1
+        command: mysqld --lower_case_table_names=1 --skip-ssl
+    
+    ms2-app:
+        image: ms2
+        external_links:
+            - ms2-mysql:mysql
+            - ms2-elasticsearch:elasticsearch
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONFIG_URI=http://admin:admin@registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ms2?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+    ms2-mysql:
+        container_name: ms2-mysql
+        image: mysql:5.7.13
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=ms2
+        command: mysqld --lower_case_table_names=1 --skip-ssl
+    ms2-elasticsearch:
+        container_name: ms2-elasticsearch
+        image: elasticsearch:2.4.0
+    
+    mygateway-app:
+        image: mygateway
+        external_links:
+            - mygateway-mysql:mysql
+            - mygateway-elasticsearch:elasticsearch
+            - jhipster-registry:registry
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONFIG_URI=http://admin:admin@registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mygateway?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=cassandra
+            - JHIPSTER_SLEEP=30
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+        ports:
+            - 8080:8080
+    mygateway-mysql:
+        container_name: mygateway-mysql
+        image: mysql:5.7.13
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=mygateway
+        command: mysqld --lower_case_table_names=1 --skip-ssl
+    mygateway-elasticsearch:
+        container_name: mygateway-elasticsearch
+        image: elasticsearch:2.4.0
+    
+    jhipster-registry:
+        extends:
+            file: jhipster-registry.yml
+            service: jhipster-registry

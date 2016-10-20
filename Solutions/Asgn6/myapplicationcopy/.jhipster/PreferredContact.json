@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "students",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "preferredContact"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nameOfChoice",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161004162938",
+    "entityTableName": "preferred_contact",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "angularSuffix": "mySuffix"
+}

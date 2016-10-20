@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "students",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "school"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "schoolName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161004162939",
+    "entityTableName": "school",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "angularSuffix": "mySuffix"
+}

@@ -1,0 +1,74 @@
+<div>
+    <h2>Students</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="student.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Student
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Full Name</span></th>
+                    <th><span>Email Address</span></th>
+                    <th><span>Phone Number</span></th>
+                    <th><span>Graduation Date</span></th>
+                    <th><span>Preferred Contact</span></th>
+                    <th><span>School</span></th>
+                    <th><span>Dormitory</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in vm.students track by student.id">
+                    <td><a ui-sref="student-detail({id:student.id})">{{student.id}}</a></td>
+                    <td>{{student.fullName}}</td>
+                    <td>{{student.emailAddress}}</td>
+                    <td>{{student.phoneNumber}}</td>
+                        <td>{{student.graduationDate | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="preferred-contact-detail({id:student.preferredContact.id})">{{student.preferredContact.nameOfChoice}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="school-detail({id:student.school.id})">{{student.school.schoolName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="dormitory-detail({id:student.dormitory.id})">{{student.dormitory.dormName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="student-detail({id:student.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="student.edit({id:student.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="student.delete({id:student.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "preferredContact",
+            "otherEntityName": "preferredContact",
+            "otherEntityField": "nameOfChoice"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "school",
+            "otherEntityName": "school",
+            "otherEntityField": "schoolName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "dormitory",
+            "otherEntityName": "dormitory",
+            "otherEntityField": "dormName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fullName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "graduationDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20161004162941",
+    "entityTableName": "student",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "angularSuffix": "mySuffix"
+}

@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Student</span> {{vm.student.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Full Name</span></dt>
+        <dd>
+            <span>{{vm.student.fullName}}</span>
+        </dd>
+        <dt><span>Email Address</span></dt>
+        <dd>
+            <span>{{vm.student.emailAddress}}</span>
+        </dd>
+        <dt><span>Phone Number</span></dt>
+        <dd>
+            <span>{{vm.student.phoneNumber}}</span>
+        </dd>
+        <dt><span>Graduation Date</span></dt>
+        <dd>
+            <span>{{vm.student.graduationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Preferred Contact</span></dt>
+        <dd>
+            <a ui-sref="preferred-contact-detail({id:vm.student.preferredContact.id})">{{vm.student.preferredContact.nameOfChoice}}</a>
+        </dd>
+        <dt><span>School</span></dt>
+        <dd>
+            <a ui-sref="school-detail({id:vm.student.school.id})">{{vm.student.school.schoolName}}</a>
+        </dd>
+        <dt><span>Dormitory</span></dt>
+        <dd>
+            <a ui-sref="dormitory-detail({id:vm.student.dormitory.id})">{{vm.student.dormitory.dormName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="student-detail.edit({id:vm.student.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

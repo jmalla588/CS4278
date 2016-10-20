@@ -1,0 +1,72 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myStudentLabel">Create or edit a Student</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.student.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.student.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="field_fullName"
+                    ng-model="vm.student.fullName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_emailAddress">Email Address</label>
+            <input type="text" class="form-control" name="emailAddress" id="field_emailAddress"
+                    ng-model="vm.student.emailAddress"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="vm.student.phoneNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_graduationDate">Graduation Date</label>
+                <div class="input-group">
+                    <input id="field_graduationDate" type="text" class="form-control" name="graduationDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.student.graduationDate" is-open="vm.datePickerOpenStatus.graduationDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('graduationDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_preferredContact">Preferred Contact</label>
+            <select class="form-control" id="field_preferredContact" name="preferredContact" ng-model="vm.student.preferredContact" ng-options="preferredContact as preferredContact.nameOfChoice for preferredContact in vm.preferredcontacts track by preferredContact.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_school">School</label>
+            <select class="form-control" id="field_school" name="school" ng-model="vm.student.school" ng-options="school as school.schoolName for school in vm.schools track by school.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_dormitory">Dormitory</label>
+            <select class="form-control" id="field_dormitory" name="dormitory" ng-model="vm.student.dormitory" ng-options="dormitory as dormitory.dormName for dormitory in vm.dormitories track by dormitory.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

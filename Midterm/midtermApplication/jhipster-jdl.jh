@@ -1,0 +1,53 @@
+
+
+
+//Janak Malla
+//Midterm - CS 4278
+//October 25, 2016
+
+
+//Grade entity.
+entity Grade {
+	score Double required
+}
+
+//Homework entity.
+entity Homework {
+    title String required,
+	due ZonedDateTime required
+}
+
+//Student entity.
+entity Student {
+	name String,
+	studentId String,
+    email String
+}
+
+//Instructor entity.
+entity Instructor {
+    name String,
+	email String
+}
+
+//Submission entity.
+entity Submission {
+	date ZonedDateTime required,
+}
+
+relationship OneToMany {
+	Student{submission} to Submission{student(studentId)}
+}
+
+relationship ManyToOne {
+	Grade{grader(name)} to Instructor{},
+    Submission{homework(title)} to Homework{}
+}
+
+relationship OneToOne {
+    Grade{submission} to Submission{grade}
+}
+
+
+
+

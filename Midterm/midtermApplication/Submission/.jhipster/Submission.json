@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "homework",
+            "otherEntityName": "homework",
+            "otherEntityField": "title"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "grade",
+            "otherEntityName": "grade",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "submission"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "student",
+            "otherEntityName": "student",
+            "otherEntityField": "studentId"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161024232330",
+    "entityTableName": "submission",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

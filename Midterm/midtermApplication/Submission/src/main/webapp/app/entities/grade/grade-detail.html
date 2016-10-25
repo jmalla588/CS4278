@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Grade</span> {{vm.grade.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Score</span></dt>
+        <dd>
+            <span>{{vm.grade.score}}</span>
+        </dd>
+        <dt><span>Submission</span></dt>
+        <dd>
+            <a ui-sref="submission-detail({id:vm.grade.submission.id})">{{vm.grade.submission.id}}</a>
+        </dd>
+        <dt><span>Grader</span></dt>
+        <dd>
+            <a ui-sref="instructor-detail({id:vm.grade.grader.id})">{{vm.grade.grader.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="grade-detail.edit({id:vm.grade.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

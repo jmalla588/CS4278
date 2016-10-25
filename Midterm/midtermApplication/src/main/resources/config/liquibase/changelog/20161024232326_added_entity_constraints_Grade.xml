@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Grade.
+    -->
+    <changeSet id="20161024232326-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="submission_id"
+                                 baseTableName="grade"
+                                 constraintName="fk_grade_submission_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="submission"/>
+
+        <addForeignKeyConstraint baseColumnNames="grader_id"
+                                 baseTableName="grade"
+                                 constraintName="fk_grade_grader_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="instructor"/>
+
+    </changeSet>
+</databaseChangeLog>
